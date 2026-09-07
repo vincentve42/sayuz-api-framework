@@ -3,7 +3,7 @@
 use Sayuz\SayuzFramework\class\Router;
 use Sayuz\SayuzFramework\controller\TestController;
 
-$app->bind("router", new Router());
+$app->bind("router", new Router($app->resolve('database')));
 
 $router = $app->resolve('router');
 

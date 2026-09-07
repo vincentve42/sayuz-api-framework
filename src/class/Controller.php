@@ -1,6 +1,14 @@
 <?php
 namespace Sayuz\SayuzFramework\class;
+
+use PDO;
+
 abstract class Controller{
+    protected PDO $database;
+    public function __construct($database)
+    {
+       $this->database = $database;
+    }
     public function index()
     {
 

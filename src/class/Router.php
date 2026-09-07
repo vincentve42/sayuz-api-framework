@@ -3,10 +3,16 @@
 namespace Sayuz\SayuzFramework\class;
 
 use Exception;
+use PDO;
 
 class Router{
     private $listRouter = [];
 
+    private PDO $database;
+    public function __construct(PDO $database)
+    {
+        $this->database = $database;
+    }
     public function add(string $url, string $method,$class, $controller)
     {
         foreach($this->listRouter as $eachRouter){
@@ -26,7 +32,7 @@ class Router{
             if((isset($eachRouter)) && $eachRouter['url'] == $url['path'] && $eachRouter['method'] == $method)
             {
                 $controllerMethod = $eachRouter['controller'];
-                $controllerObj = new $eachRouter['class']();
+                $controllerObj = new $eachRouter['class']($this->database);
                 $controllerObj->$controllerMethod();
                 return;
             }
