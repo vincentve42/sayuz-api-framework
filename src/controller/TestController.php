@@ -1,10 +1,14 @@
-<?php 
-
+<?php
 namespace Sayuz\SayuzFramework\controller;
 
-class TestController{
-    public static function test()
-    {
-        echo "Halo";
+use Sayuz\SayuzFramework\class\Controller;
+
+
+class TestController extends Controller{
+    public function test(){
+        echo "halo";
+    }
+    public function index(){
+        echo "tos";
     }
 }

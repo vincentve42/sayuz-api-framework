@@ -25,8 +25,9 @@ class Router{
         {
             if((isset($eachRouter)) && $eachRouter['url'] == $url['path'] && $eachRouter['method'] == $method)
             {
-                $controller = $eachRouter['controller'];
-                $eachRouter['class']::$controller();
+                $controllerMethod = $eachRouter['controller'];
+                $controllerObj = new $eachRouter['class']();
+                $controllerObj->$controllerMethod();
                 return;
             }
         }
