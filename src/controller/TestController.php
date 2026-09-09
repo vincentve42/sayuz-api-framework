@@ -12,6 +12,8 @@ class TestController extends Controller{
         $newModel->username = "sayuz";
         $newModel->setPassword("tesrt");
         $newModel->save();
+        $newModel->username = "pro";
+        $newModel->save();
     }
     public function index(){
         echo "tos";
