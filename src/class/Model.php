@@ -18,9 +18,26 @@ abstract class Model{
        $this->database = $database;
     }
     public function find($id){
-        $stmt = $this->database->prepare("SELECT * FROM " . $this->table . "WHERE id=? LIMIT 1");
+        $stmt = $this->database->prepare("SELECT * FROM " . $this->table . " WHERE id=? LIMIT 1");
         $stmt->bindValue(1, $id, PDO::PARAM_INT);
+        try{
+            $stmt->execute();
+        }
+        catch (PDOException $e){
+            echo $e;
+            die();
+        }
         
+        $array = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($stmt->rowCount() != 0)
+            $this->mapArrayToObject($array,array_keys($array));
+
+
+    }
+    private function mapArrayToObject($array, $arrayKeys){
+        foreach($arrayKeys as $eachArray){
+            $this->$eachArray = $array[$eachArray];
+        }
     }
     private function prepareInsertQueryStr($objectKeys, $query) : string{
         $query = $query . "INSERT INTO " . $this->table . "(";
@@ -113,6 +130,7 @@ abstract class Model{
             }
             catch(PDOException $e){
                 echo $e;
+                die();
             }
         
             $stmt = $this->database->prepare("SELECT id FROM " . $this->table . " ORDER BY id DESC " . "LIMIT 1");
@@ -121,6 +139,7 @@ abstract class Model{
             }
             catch(PDOException $e){
                 echo $e;
+                die();
             }
 
             $this->id = $stmt->fetch()[0];
