@@ -4,12 +4,12 @@ function validateArgCount($argc)
 {
     if($argc < 2)
     {
-        printf("Type --help to see all commands");
+        printf("Type help to see all commands");
         return false;
     }
     if($argc > 3)
     {
-        printf("Too many arguments! type --help to see all commands");
+        printf("Too many arguments! type help to see all commands");
         return false;
     }
     return true;
