@@ -6,6 +6,13 @@ function modelContent(string $modelName) : string
     return $content;
 
 }
+function controllerContent(string $controllerName) : string
+{
+    $content = "<?php\nnamespace Sayuz\SayuzFramework\controller;\nuse Sayuz\SayuzFramework\class\Controller;\nclass $controllerName extends Controller{\n\n}";
+
+    return $content;
+
+}
 function createModel(string $modelName)
 {
     if(!isModelExist($modelName))
@@ -16,5 +23,14 @@ function createModel(string $modelName)
     fwrite($file, modelContent($modelName));
     return;
 }
-
+function createController(string $controllerName)
+{
+    if(!isControllerExist($controllerName))
+    {
+        return;
+    }
+    $file = fopen(__DIR__ . "/../controller/$controllerName.php", "w");
+    fwrite($file, controllerContent($controllerName));
+    return;
+}
 ?>
