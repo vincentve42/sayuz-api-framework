@@ -16,5 +16,5 @@ function displayHelpMsg()
 function runServer()
 {
     require __DIR__ . '/../config/config.php';
-    shell_exec("php -S" .$serverRunConfig["hostname"].":".$serverRunConfig["port"] . " ". __DIR__ . "\..\public\index.php");
+    shell_exec("php -S" .$serverRunConfig["hostname"].":".$serverRunConfig["port"] . " ". __DIR__ . "/../index.php");
 }

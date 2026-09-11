@@ -7,7 +7,7 @@ use Sayuz\SayuzFramework\model\User;
 
 class TestController extends Controller{
     public function test(){
-        Controller::view("index");
+        
     }
     public function index(){
         echo "tos";

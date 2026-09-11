@@ -96,6 +96,11 @@ function executeCommand(array $command)
             runServer();
             break;
         }
+        default:
+        {
+            printf("Unkown command!\n");
+            break;
+        }
         
     }
 }   
