@@ -7,7 +7,7 @@ use PDO;
 
 class Router{
     private $listRouter = [];
-
+    
     private PDO $database;
     public function __construct(PDO $database)
     {
