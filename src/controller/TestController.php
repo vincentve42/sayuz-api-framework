@@ -7,14 +7,7 @@ use Sayuz\SayuzFramework\model\User;
 
 class TestController extends Controller{
     public function test(){
-        echo "halo";
-        $newModel = new User($this->database);
-        // $newModel->username = "sayuz";
-        // $newModel->setPassword("tesrt");
-        // $newModel->save();
-        // $newModel->username = "pro";
-        // $newModel->save();
-        $newModel->find(1);
+        Controller::view("index");
     }
     public function index(){
         echo "tos";
